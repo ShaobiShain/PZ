@@ -32,7 +32,7 @@ print(result_string)
 # (путь), собственно имя и расширение. Выделить из этой строки имя файла (без
 # расширения).
 
-
+    
 full_file_name = 'hello_world.txt'  
 # Разделение имени файла и расширения
 file_name, file_extension = full_file_name.split('.')
