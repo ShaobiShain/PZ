@@ -58,16 +58,9 @@ if "сахар" in perekrestok:
     stores_with_sugar.append("Перекресток") 
 
 if stores_with_sugar:
-    print(f"сахар можно преобрести в магазине: {', '.join(stores_with_sugar)}")
+    print("Сахар можно приобрести в следующих магазинах:", ', '.join(stores_with_sugar))
 else:
-    print("сахара нет - закончился.")
-
-
-
-
-
-
-
+    print("Сахара нет в ни одном из магазинов (((")
 
 
 
