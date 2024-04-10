@@ -92,6 +92,7 @@ def insert_new_record():
         ''', (new_discipline_name, new_speciality, new_lectures, new_practical, new_laboratory, new_reporting_form))
         con.commit()
 
+# проверка на дубликаты 
 def table_is_empty():
     with sq.connect('PZ15/pz15_DB.db') as con:
         cur = con.cursor()
@@ -103,6 +104,7 @@ create_table()
 if table_is_empty():
     insert_data()
 
+#--------------------------------------------------------------------------окно с таблицой-------------------------------------------------------------------------------------------------------
 class MyTable(QWidget):
     def __init__(self, data):
         super().__init__()
@@ -129,6 +131,8 @@ def show_table():
     table = MyTable(data)
     table.show()
     sys.exit(app.exec_())
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 while True:
     print("-" * 42)
