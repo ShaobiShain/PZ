@@ -50,8 +50,8 @@ def update_record():
         new_discipline_name = input('Введите новое название дисциплины: ')
         new_speciality = input('Введите новую специальность: ')
         new_lectures = input('Введите новое количество лекций: ')
-        new_practical = input('Введите новое количество практических занятий: ')
-        new_laboratory = input('Введите новое количество лабораторных работ: ')
+        new_practical = input('Введите новое количество часов практических занятий: ')
+        new_laboratory = input('Введите новое количество часов лабораторных работ: ')
         new_reporting_form = input('Введите новую форму отчетности: ')
 
         cur.execute('''
