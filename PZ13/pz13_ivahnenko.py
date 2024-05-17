@@ -20,7 +20,7 @@ print(matrix)
 
 # def average_positive_multiples_of_3(matrix):
 #     # список положительных элементов, кратных 3, с использованием спискового включения
-#     multiples_of_3 = [elem for row in matrix for elem in row if elem > 0 and elem % 3 == 0]
+    # multiples_of_3 = [elem for row in matrix for elem in row if elem > 0 and elem % 3 == 0]
     
 #     # Вычисляем сумму всех таких элементов
 #     total = sum(multiples_of_3)
