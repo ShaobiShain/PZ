@@ -1,32 +1,9 @@
 # Для задачи из блока 1 создать две функции, save_def и load_def, которые позволяют сохранять информацию из экземпляров класса (3 шт.)
 # в файл и загружать ее обратно. Использовать модуль pickle для сериализации и десериализации объектов Python в бинарном формате.
-
 import pickle
 from colorama import init, Fore, Back, Style
 
 init()
-
-print(Style.BRIGHT + Fore.GREEN)
-print("+──────────────────────────────────────────────────────── +\n| ╔╗╔══╗╔══╗ ╔══╗╔╗   ╔╗╔══╗╔╗╔╗ ╔══╗╔═══╗╔════╗╔══╗╔═══╗ |\n| ║║║╔═╝║╔╗║ ║╔╗║║║   ║║║╔═╝║║║║ ║╔╗║║╔═╗║╚═╗╔═╝║╔╗║║╔═╗║ |\n| ║╚╝║  ║╚╝║ ║║║║║╚══╗║╚╝║  ║╚╝║ ║║║║║╚═╝║  ║║  ║║║║║╚═╝║ |\n| ║╔╗║  ║╔╗║ ║║║║║╔═╗║║╔╗║  ╚═╗║ ║║║║╚╗╔╗║  ║║  ║║║║║╔══╝ |\n| ║║║╚═╗║║║║╔╝║║║║╚═╝║║║║╚═╗ ╔╝║╔╝║║║ ║║║║  ║║  ║╚╝║║║    |\n| ╚╝╚══╝╚╝╚╝╚═╝╚╝╚═══╝╚╝╚══╝ ╚═╝╚═╝╚╝ ╚╝╚╝  ╚╝  ╚══╝╚╝    | \n+──────────────────────────────────────────────────────── +")
-
-print(Style.BRIGHT + Fore.YELLOW)
-print(' '*7 ,"-" * 42)
-print(' '*7 ,'| Выберите действие:' , " " * 19 , "|")
-print(' '*7 ,"-" * 42)
-print(' '*7 ,'| 1. Сложение' , " " * 26 , "|")
-print(' '*7 ,"-" * 42)
-print(' '*7 ,'| 2. Вычитание' , " " * 25 , "|")
-print(' '*7 ,"-" * 42)
-print(' '*7 ,'| 3. Умножение'  , " " * 25 , "|")
-print(' '*7 ,"-" * 42)
-print(' '*7 ,'| 4. Деление'  , " " * 27 , "|")
-print(' '*7 ,"-" * 42)
-print(' '*7 ,'| 5. Возведение'  , " " * 24, "|")
-print(' '*7 ,"-" * 42)
-print(' '*7 ,'| 6. Просмотр результата' , " " * 15, "|")
-print(' '*7 ,"-" * 42)
-
-math = int(input("        -> "))
 
 class Calculator:
     def __init__(self):
@@ -54,40 +31,32 @@ class Calculator:
         self.result = a ** b
         return self.result
 
-calc = Calculator()
+def save_def(obj, filename):
+    with open(filename, 'wb') as f:
+        pickle.dump(obj, f)
 
-if math == 1:
-    a = int(input("        A -> "))
-    b = int(input("        B -> "))
-    result = calc.add(a,b)
-elif math == 2:
-    a = int(input("        A -> "))
-    b = int(input("        B -> "))
-    result = calc.sub(a,b)
-elif math == 3:
-    a = int(input("        A -> "))
-    b = int(input("        B -> "))
-    result = calc.mlp(a,b)
-elif math == 4:
-    a = int(input("        A -> "))
-    b = int(input("        B -> "))
-    result = calc.dvd(a,b)
-elif math == 5:
-    a = int(input("        A -> "))
-    b = int(input("        B -> "))
-    result = calc.sqr(a,b)
-elif math == 6:
-    try:
-        loaded_calc = pickle.load(open('calc.pkl', 'rb'))
-        result = loaded_calc.result
-    except FileNotFoundError:
-        print("Нет сохраненного результата.")
-else:
-    print("Неверный выбор.")
+def load_def(filename):
+    with open(filename, 'rb') as f:
+        return pickle.load(f)
 
-print(Style.BRIGHT + Fore.WHITE)
-print("        Результат -> ", result)
-print("  ")
-
-# Сохранение результата в файл
-pickle.dump(calc, open('calc.pkl', 'wb'))
+# экземпляры
+calc1 = Calculator()
+calc2 = Calculator()
+calc3 = Calculator()
+# вызыв. методы
+calc1.add(5, 3)
+calc2.sub(500, 42)
+calc3.mlp(23, 3)
+calc3.dvd(102, 3)
+# сохр расчеты
+save_def(calc1, 'calc1.pkl')
+save_def(calc2, 'calc2.pkl')
+save_def(calc3, 'calc3.pkl')
+# выщружаем из файла
+loaded_calc1 = load_def('calc1.pkl')
+loaded_calc2 = load_def('calc2.pkl')
+loaded_calc3 = load_def('calc3.pkl')
+#выводим
+print("Результат первого расчета:", loaded_calc1.result)
+print("Результат второго расчета:", loaded_calc2.result)
+print("Результат третьего расчета:", loaded_calc3.result)
