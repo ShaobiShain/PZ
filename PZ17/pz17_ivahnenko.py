@@ -25,7 +25,7 @@ def calculate_segments():
 # окно 
 root = tk.Tk()
 root.title("Расчет отрезков")
-root.geometry("300x150")
+root.geometry("300x120")
 
 #поля для ввода данных
 entry_A_label = tk.Label(root, text="Введите длину отрезка A:")

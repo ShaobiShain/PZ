@@ -78,7 +78,7 @@ print(sizes)
 print("Пункт 3")
 print('-' * 100)
 
-import os
+
 
 os.chdir("../PZ11")
 
